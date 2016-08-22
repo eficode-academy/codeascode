@@ -6,7 +6,7 @@
         * Product owner (Andrey or Mike)
         * Devops
         * Development
- 
+
 We will run 45 minute sprints, 5 minute retrospective, 10 minute weekends
 
 We want to use all the tools and techniques we learned this week.  
@@ -18,7 +18,7 @@ We want to use all the tools and techniques we learned this week.
     * Continuous Delivery with Jenkins
     * Extra credit:
       * Implement the praqmatic git flow branching strategy
-    
+
 ### Sprint contains:
 
    * Planning: create the github issues to describe the work you will do
@@ -36,6 +36,22 @@ The end goal for our development process:
      * Push the image to a docker registry
      * Deploy the web server to production
 
+## Install docker compose
+
+Follow these steps to install docker-compose:
+
+    ubuntu@docker:~$ sudo -i
+    root@docker:~$ curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+    root@docker:~$ chmod +x /usr/local/bin/docker-compose
+    root@docker:~$ exit
+    ubuntu@docker:~$
+
+Verify `compose` is installed:
+
+    ubuntu@docker:~/code-infra/containers$ docker-compose --version
+    docker-compose version 1.8.0, build f3628c7
+    ubuntu@docker:~/code-infra/containers$
+
 ### Set up a jenkins, docker registry and artifactory server for the team
 ````
 ubuntu@docker:~$ git clone https://github.com/praqma-training/code-infra
@@ -43,8 +59,7 @@ ubuntu@docker:~$ git clone https://github.com/praqma-training/code-infra
 ## Follow the setup instructions
 Go here and follow the instructions to make the data directories: https://github.com/praqma-training/code-infra
 
-## Install docker compose
-https://docs.docker.com/compose/install/
+
 
 ## Bring the system up
 ````
@@ -60,7 +75,7 @@ The starting point for the project is this code [https://github.com/praqma-train
    1. **Make a fork for your team**. Fork the project in github to make the shared repository for your team.
    2. Enable github issues
    3. Create a kanban board for your project on [waffle.io](waffle.io)
-   
+
 ## The automation setup
 
    1. Set up a seed job for the job DSL to make the build and test jobs.
@@ -117,5 +132,5 @@ Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretest
 
 Here are some ideas for improvements to the continuous delivery pipeline:
 
- * Run the unit tests during the build 
+ * Run the unit tests during the build
  * Add post commit hooks in github to trigger automatically (rather than polling)
