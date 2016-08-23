@@ -94,7 +94,7 @@ Here are some ideas for improvements to the continuous delivery pipeline:
  * Run the unit tests during the build
  * Add post commit hooks in github to trigger automatically (rather than polling)
 
-## Implement the project
+## Iteration 3: Implement the project
 
 We want to build a simple web server in go that fulfils some very important business needs.
 
@@ -128,7 +128,7 @@ Examples:
 
 ````
 
-## Iteration 3: Java
+## Iteration 4: Java
 
 Our CTO went to a conference and decided that we should do a re-write in java.  Implement the same functionality with java.
 
