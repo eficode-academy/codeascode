@@ -26,7 +26,7 @@ We want to use all the tools and techniques we learned this week.
    * Demo: show what was done
    * Retrospective: reflect on how it went and decide on ways to improve
 
-## Iteration 0: The development environment
+## Iteration 0: The development infrastructure
 
 The end goal for our development process:
 
@@ -36,7 +36,7 @@ The end goal for our development process:
      * Push the image to a docker registry
      * Deploy the web server to production
 
-## Install docker compose
+### Install docker compose
 
 Follow these steps to install docker-compose:
 
@@ -56,19 +56,12 @@ Verify `compose` is installed:
 ````
 ubuntu@docker:~$ git clone https://github.com/praqma-training/code-infra
 ````
-## Follow the setup instructions
+### Follow the setup instructions
 Go here and follow the instructions to make the data directories: https://github.com/praqma-training/code-infra
 
+Verify that you can reach the apache server in your web browser and that jenkins is up and running.
 
-
-## Bring the system up
-````
-ubuntu@docker:~$ cd code-infra/containers
-ubuntu@docker:~/code-infra/containers$ docker-compose up
-````
-Verify that you can reach the server in your web browser.
-
-### Set up the build and test jobs for the application
+## Iteration 1: Set up the build and test jobs for the application
 
 The starting point for the project is this code [https://github.com/praqma-training/gowebserver](https://github.com/praqma-training/gowebserver).
 
@@ -80,7 +73,7 @@ The starting point for the project is this code [https://github.com/praqma-train
 
    1. Set up a seed job for the job DSL to make the build and test jobs.
    2. Verify that the jobs are created.
-   3. Trigger a build and verify that it is deplyed.
+   3. Trigger a build and verify that it is deployed.
 
 You can [find the instructions for setting this up in the slides](https://docs.google.com/presentation/d/1WPCNSgP0g3Gc0gx1G60D3hl3hdtyclbumsx0Qm10QsY/edit?usp=sharing).
 
@@ -89,7 +82,19 @@ Once you have been through the pipeline, you should find that your application i
    * TESTING: `<YOUR_AWS_SERVER>:8000`
    * PRODUCTION: `<YOUR_AWS_SERVER>:9999`
 
-## The project
+## Iteration 2: Pre-tested Integration!
+
+Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin) for your build.
+
+
+### Extra credit
+
+Here are some ideas for improvements to the continuous delivery pipeline:
+
+ * Run the unit tests during the build
+ * Add post commit hooks in github to trigger automatically (rather than polling)
+
+## Implement the project
 
 We want to build a simple web server in go that fulfils some very important business needs.
 
@@ -123,14 +128,9 @@ Examples:
 
 ````
 
-## Extra credit!
+## Iteration 3: Java
 
-Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin) for your build.
+Our CTO went to a conference and decided that we should do a re-write in java.  Implement the same functionality with java.
 
-
-## Low hanging fruit
-
-Here are some ideas for improvements to the continuous delivery pipeline:
-
- * Run the unit tests during the build
- * Add post commit hooks in github to trigger automatically (rather than polling)
+(Don't worry, the code is already here...)
+https://github.com/praqma-training/docker-java-server
