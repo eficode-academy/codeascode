@@ -59,6 +59,26 @@ We need to build the docker image inside the jenkins folder, and then run it.
 Check that the jenkins server is up and running on:
 http://YOUR-DOCKER-HOST:8081/jenkins
 
+### Set up the build and test jobs for the application
+
+The starting point for the project is Go:[https://github.com/praqma-training/gowebserver](https://github.com/praqma-training/gowebserver).
+
+   1. **Make a fork for your team**. Fork the project in github to make the shared repository for your team. Add the teammates as collaborators
+   2. Enable github issues
+   3. Create a kanban board for your project on [waffle.io](http://waffle.io)
+
+## The automation setup
+
+XXX!!! Make this part work
+####Github uden trigger
+####Go test
+   ~~1. Set up a seed job for the job DSL to make the build and test jobs.
+   2. Verify that the jobs are created.
+   3. Trigger a build and verify that it is deployed.~~
+
+You can [find the instructions for setting this up in the slides](https://docs.google.com/presentation/d/1WPCNSgP0g3Gc0gx1G60D3hl3hdtyclbumsx0Qm10QsY/edit?usp=sharing).
+
+Once you have been through the pipeline, you should find that your application is available at:
 
 ## Iteration two - Pretested Integration
 
@@ -78,3 +98,5 @@ The important part is not to use fancy language constructs or optimize the algor
 ## Iteration four 
 
 ## ...
+~~* Java: [https://github.com/praqma-training/docker-java-server](https://github.com/praqma-training/docker-java-server)
+~~
