@@ -25,36 +25,41 @@ The end goal for our development process:
  * Automatically delivering successful builds to the production environment
  * Configure the Jenkins jobs using JobDSL and Groovy
 
-## Preparations
-Each team needs _one_ server to be their pipeline server.
-Make sure that everyone connects to that particular server when setting thing up.
-
 Every iteration is devided into the following sections:
    * **Planning**: create the github issues to describe the work you will do
    * **Working**: working on the sprint items
    * **Demo**: show what was done
    * **Retrospective**: reflect on how it went and decide on ways to improve
 
+We use Kanban boards hosted by (waffle.io) which will be introduced in iteration one.
+
+## Preparations
+
+Each team needs _one_ server to be their pipeline server.
+Make sure that everyone connects to that particular server when setting thing up.
+
 
 ## Iteration one
 In order to build our pipeline, we need to have our CI infrastructure up and running.
 
-###Setup the infrastructure
+### Setup the infrastructure
 Clone our [code infrastructure repository](https://github.com/praqma-training/code-infra)
-
+```
 	git clone https://github.com/praqma-training/code-infra
 	cd code-infra/containers
 	sudo ./create-homes.sh
-
+```
 
 This reposiory has _a lot_ of containers that can be started, but we need only jenkins.
-
+```
 	cd jenkins
-
+```
 We need to build the docker image inside the jenkins folder, and then run it.
 
+```
 	docker build -t myjenkins .
 	docker run -d -p 8081:8080 -p 50000:50000 -v /opt/containers/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/lib/x86_64-linux-gnu/libapparmor.so.1 myjenkins
+```
 
 Check that the jenkins server is up and running on:
 http://YOUR-DOCKER-HOST:8081/jenkins
@@ -69,16 +74,13 @@ The starting point for the project is Go:[https://github.com/praqma-training/gow
 
 ## The automation setup
 
-XXX!!! Make this part work
-####Github uden trigger
-####Go test
-   ~~1. Set up a seed job for the job DSL to make the build and test jobs.
-   2. Verify that the jobs are created.
-   3. Trigger a build and verify that it is deployed.~~
+### Configure the first build job
 
-You can [find the instructions for setting this up in the slides](https://docs.google.com/presentation/d/1WPCNSgP0g3Gc0gx1G60D3hl3hdtyclbumsx0Qm10QsY/edit?usp=sharing).
+**TODO** Instructions on setting up the build (and deploy?)
 
-Once you have been through the pipeline, you should find that your application is available at:
+**TODO** Instructions on running first build
+
+**TODO** 
 
 ## Iteration two - Pretested Integration
 
@@ -98,7 +100,6 @@ expressing each digit separately starting with the
 leftmost digit and skipping any digit with a value of zero."
 
 Examples:
-
 1 ->    "I" | 10 ->    "X" | 100 ->    "C" | 1000 ->    "M"
 2 ->   "II" | 20 ->   "XX" | 200 ->   "CC" | 2000 ->   "MM"
 3 ->  "III" | 30 ->  "XXX" | 300 ->  "CCC" | 3000 ->  "MMM"
