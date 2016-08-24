@@ -38,6 +38,21 @@ Every iteration is devided into the following sections:
 
 ## Iteration one
 
-## Iteration two
+## Iteration two - Pretested Integration
+
+Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin) for your build.
+
+## Iteration three - actually implement Roman Numerals
+
+Implement the Roman Numerals in the following ways, to see the build pipeline in action. Help for the GO syntax can be found here: [Effective GO](https://golang.org/doc/effective_go.html)
+
+The important part is not to use fancy language constructs or optimize the algorithm, but to make different build and see how the Continuous Delivery Pipeline works. 
+
+ * Naively
+ * Iteratively
+ * Recursively using switch cases [Go Language - Switch](https://golang.org/doc/effective_go.html#switch)
+
+
+## Iteration four 
 
 ## ...
