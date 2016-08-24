@@ -6,13 +6,13 @@ When the day is over you should be able to make changes to your Roman numeral im
 
 We want to use all the tools and techniques we learned this week.  
 
-    * Test driven development
-    * Agile task management with github issues
-    * Version control with git
-    * Build, test and ship with docker containers
-    * Continuous Delivery with Jenkins
-    * Extra credit:
-      * Implement the praqmatic git flow branching strategy
+ * Test driven development
+ * Agile task management with github issues
+ * Version control with git
+ * Build, test and ship with docker containers
+ * Continuous Delivery with Jenkins
+ * Extra credit:
+   * Implement the praqmatic git flow branching strategy
 
 ## Outline of the day
 
