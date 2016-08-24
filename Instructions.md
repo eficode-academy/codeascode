@@ -67,7 +67,7 @@ The starting point for the project is this code [https://github.com/praqma-train
 
    1. **Make a fork for your team**. Fork the project in github to make the shared repository for your team.
    2. Enable github issues
-   3. Create a kanban board for your project on [waffle.io](waffle.io)
+   3. Create a kanban board for your project on [waffle.io](http://waffle.io)
 
 ## The automation setup
 
