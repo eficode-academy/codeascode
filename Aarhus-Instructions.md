@@ -37,6 +37,28 @@ Every iteration is devided into the following sections:
 
 
 ## Iteration one
+In order to build our pipeline, we need to have our CI infrastructure up and running.
+
+###Setup the infrastructure
+Clone our [code infrastructure repository](https://github.com/praqma-training/code-infra)
+
+	git clone https://github.com/praqma-training/code-infra
+	cd code-infra/containers
+	sudo ./create-homes.sh
+
+
+This reposiory has _a lot_ of containers that can be started, but we need only jenkins.
+
+	cd jenkins
+
+We need to build the docker image inside the jenkins folder, and then run it.
+
+	docker build -t myjenkins .
+	docker run -p 8081:8080 -p 50000:50000 -v /opt/containers/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/lib/x86_64-linux-gnu/libapparmor.so.1 myjenkins
+
+Check that the jenkins server is up and running on:
+http://YOUR-DOCKER-HOST:8081/jenkins
+
 
 ## Iteration two
 
