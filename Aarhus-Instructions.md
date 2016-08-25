@@ -64,7 +64,7 @@ We need to build the docker image inside the jenkins folder, and then run it.
 ```
 
 Check that the jenkins server is up and running on:
-http://YOUR-DOCKER-HOST:8081/jenkins
+http://YOUR-AWS-INSTANCE:8081/jenkins
 
 ### Set up the build and test jobs for the application
 
