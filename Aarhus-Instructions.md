@@ -47,6 +47,8 @@ We use Kanban boards hosted by (waffle.io) which will be introduced in iteration
 Each team needs _one_ server to be their pipeline server.
 Make sure that everyone connects to that particular server when setting thing up.
 
+Create a Kanban board for your project on [waffle.io](http://waffle.io). This will serve as the basis for your work, and should be up to date at all times. When you have created the waffle board send a link to 
+** TODO MBA ** Where/how to expose the waffle board to instructors. MBA will write this.
 
 The starting point for the project is Go:[https://github.com/praqma-training/gowebserver](https://github.com/praqma-training/gowebserver).
 
@@ -54,9 +56,8 @@ The starting point for the project is Go:[https://github.com/praqma-training/gow
    2. Enable github issues
    3. Create board at waffle.io
 
-This will serve as the basis for your work, and should be up to date at all times. When you have created the waffle board post a link to it in #aarhus on Slack
 
-## Iteration one
+## Step I
 In order to build our pipeline, we need to have our CI infrastructure up and running.
 
 ### Setup the infrastructure
@@ -81,23 +82,39 @@ We need to build the docker image inside the jenkins folder, and then run it.
 Check that the jenkins server is up and running on:
 http://YOUR-AWS-INSTANCE:8081/jenkins
 
-### Set up the build and test jobs for the application
+## Step II - Set up initial build and test jobs for the application
 
+### Configure a simple build job
 
-## The automation setup
+Hint: We obviously want to use our good friend Docker to build the go app, so that we avoid installing go-lang and other dependencies on our build server (or locally on the developers machine).
 
-### Configure the first build job
+Luck is with you, as the gowebserver repo has a Dockerfile that will actualy build the webserver. 
 
-**TODO Johan** Instructions on setting up the build (and deploy?)
+Try something like: `docker build .` as a starter. Consider tagging the image with a name so you can run it later.
 
-**TODO Johan** Instructions on running first build
+You might also want to look at the --no-cache option ...
 
-**TODO** 
+If you really get curious about how the Dockerfile works, ask google or your instructor.
 
-## Iteration two
-Setup your build job to poll Github for changes.
+### Setup your build job to poll Github for changes.
 
-## Iteration three - start implementing Roman Numerals
+### Set up simple testing
+Make your job run the "unit tests" as well. (yes, we know that the included tests are functional tests. Feel free to write some true unit tests as well).
+
+Hint: The docker image you built has go installed, and go allows you to use the command `go test` to 
+automatically run any tests that follow the `func TestXxx(*testing.T)` signature. Again no need to install any dependencies,
+just use the image you just built.
+
+When you get this far, you are ready to start TDD'ing your web app.
+
+## Step III - pretested 
+Implement a Pretested Integration workflow
+
+Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin) for your build.
+
+Hint: Since Jenkins might have to do commits on merges, you will have to set up a user.name and user.email setting in Jenkins global configuration. ("jenkins" and "jenkins@localhost" should do fine for now).
+
+## Step IV - start implementing Roman Numerals
 
 We need a `go` web service that when we hit the `/roman/<number>` url it will return the roman numeral representation of it.
 
@@ -133,25 +150,41 @@ Do some work on implementing the Roman Numerals converter, to see the build pipe
 Don't focus on using fancy language constructs or using a fancy algorithm. The actual coding exercise is not important - instead focus on the process of making small incremental changes, commiting and pushing them, and see how the Continuous Delivery Pipeline works. 
 
 
-## Iteration four 
+
+
+## Step V 
 Setup performance test
 
-## Iteration five 
-Implement a Pretested Integration workflow
+## Step VI - Extend your pipeline
+Now that we have a basic pretested integration setup that only allows "good" commits on master, it is time to continue the CD storyline and add other verification steps "post-integration".
 
-Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin) for your build.
+Suggestions might include:
 
-## Iteration six
+  * Run functional tests
+  * Deploy your webapp "to a test environment", e.g. on port 8081.
+  * Use the included Dockerized siege-engine tool to load test your application.
+  * Can you find a simple code coverage tool for go or other static analysis?
+  * Release notes?
+  * Versioning?
 
-Continue work on the roman numerals converter. If you have already completed the full converter, this is the time where you might spend a little time improving or refactoring your implementation.
+If a commit passes through your pipeline and has "sufficient" quality, it is time to deploy it to production. E.g. port 80
 
-There are many ways of solving the problem:
+## Step VII
 
- * Naively
- * Iteratively
- * Recursively using switch cases [Go Language - Switch](https://golang.org/doc/effective_go.html#switch)
- * Creatively :-)
+Continue work on the roman numerals converter. If you have already completed the full converter, try to see if you can improve the way you test it. 
+
+Ideas could be:
+
+ * Can you write plain true unit tests instead of functional http tests?
+ * Can you find a way of splitting up your tests, so that you can control when to run unit tests and when to run http tests?
 
 
-## Iteration seven
-Try to re-create one or more of your build jobs using JobDSL
+## Optional tasks to keep you going
+### Writing jobDSL
+ * Try to re-create one or more of your build jobs using JobDSL. 
+ * Try to use jobDSL to set up a Jenkins "Pipeline View" to show your pipeline status.
+
+## Using the provided JobDSL and analysing the created pipeline.
+ * The gowebserver actually has a JobDSL script that sets up a pipeline for the project. Try to get it running in a seed job that polls for changes.
+ * Experiment with making simple iterative changes to the pipeline and see the seed job recreate the generated jobs.
+ * Try to understand all the weird things that the pipeline steps do to pass parameters on to the downstream jobs.
