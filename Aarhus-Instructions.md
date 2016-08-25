@@ -47,14 +47,14 @@ We use Kanban boards hosted by (waffle.io) which will be introduced in iteration
 Each team needs _one_ server to be their pipeline server.
 Make sure that everyone connects to that particular server when setting thing up.
 
-Create a Kanban board for your project on [waffle.io](http://waffle.io). This will serve as the basis for your work, and should be up to date at all times. When you have created the waffle board send a link to 
-** TODO MBA ** Where/how to expose the waffle board to instructors. MBA will write this.
 
 The starting point for the project is Go:[https://github.com/praqma-training/gowebserver](https://github.com/praqma-training/gowebserver).
 
    1. **Make a fork for your team**. Fork the project in github to make the shared repository for your team. Add the teammates as collaborators
    2. Enable github issues
    3. Create board at waffle.io
+
+This will serve as the basis for your work, and should be up to date at all times. When you have created the waffle board post a link to it in #aarhus on Slack
 
 ## Iteration one
 In order to build our pipeline, we need to have our CI infrastructure up and running.
