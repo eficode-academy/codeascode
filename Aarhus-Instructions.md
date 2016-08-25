@@ -2,6 +2,15 @@
 
 This group project should take you through most of the steps for setting up a functional pipeline for your own project. In this project we have a very small product, a tiny webservice implemented in GO - converting integers to their Roman numeral representation.
 
+A pipeline for this small project could contain steps like the following:
+
+ * Build 
+ * Some sort of quick ‘Unit’ test
+ * Deploy to a test environment
+ * Functional tests
+ * Release
+ * Deploy to production
+
 When the day is over you should be able to make changes to your Roman numeral implementation and follow the build steps all the way to a new release.
 
 We want to use all the tools and techniques we learned this week.  
@@ -83,11 +92,10 @@ The starting point for the project is Go:[https://github.com/praqma-training/gow
 
 **TODO** 
 
-## Iteration two - Pretested Integration
+## Iteration two
+Setup your build job to poll Github for changes.
 
-Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin) for your build.
-
-## Iteration three - actually implement Roman Numerals
+## Iteration three - start implementing Roman Numerals
 
 We need a `go` web service that when we hit the `/roman/<number>` url it will return the roman numeral representation of it.
 
@@ -118,21 +126,30 @@ Examples:
 
 ````
 
-Implement the Roman Numerals in the following ways, to see the build pipeline in action. Help for the GO syntax can be found here: [Effective GO](https://golang.org/doc/effective_go.html)
+Do some work on implementing the Roman Numerals converter, to see the build pipeline in action. Help for the Go-lang syntax can be found here: [Effective GO](https://golang.org/doc/effective_go.html)
 
-The important part is not to use fancy language constructs or optimize the algorithm, but to make different build and see how the Continuous Delivery Pipeline works. 
-
- * Naively
- * Iteratively
- * Recursively using switch cases [Go Language - Switch](https://golang.org/doc/effective_go.html#switch)
+Don't focus on using fancy language constructs or using a fancy algorithm. The actual coding exercise is not important - instead focus on the process of making small incremental changes, commiting and pushing them, and see how the Continuous Delivery Pipeline works. 
 
 
 ## Iteration four 
 Setup performance test
 
-## Iteration five
-Setup your build job to poll Github for changes.
+## Iteration five 
+Implement a Pretested Integration workflow
 
+Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin) for your build.
 
 ## Iteration six
-Try to create the same build job using JobDSL
+
+Continue work on the roman numerals converter. If you have already completed the full converter, this is the time where you might spend a little time improving or refactoring your implementation.
+
+There are many ways of solving the problem:
+
+ * Naively
+ * Iteratively
+ * Recursively using switch cases [Go Language - Switch](https://golang.org/doc/effective_go.html#switch)
+ * Creatively :-)
+
+
+## Iteration seven
+Try to re-create one or more of your build jobs using JobDSL
