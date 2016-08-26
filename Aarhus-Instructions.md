@@ -25,7 +25,7 @@ We want to use all the tools and techniques we learned this week.
 
 ## Outline of the day
 
-The project is done in groups, and we will pause you all every now and then to give some feedback during the day, and to enable you to share experiences. You will have all day to work with the project, and we do not have a definitive "DONE" criteria, so just take you time you need to understand the steps in the build pipeline.
+The project is done in groups, and we will pause you all every now and then to give some feedback during the day, and to enable you to share experiences. You will have all day to work with the project, and we do not have a definitive "DONE" criteria, so just take the time you need to understand the steps in the build pipeline.
 
 The end goal for our development process:
 
@@ -40,12 +40,12 @@ Every iteration is devided into the following sections:
    * **Demo**: show what was done
    * **Retrospective**: reflect on how it went and decide on ways to improve
 
-We use Kanban boards hosted by (waffle.io) which will be introduced in iteration one.
+We use Kanban boards hosted by (waffle.io) which will be introduced in preparations below.
 
 ## Preparations
 
 Each team needs _one_ server to be their pipeline server.
-Make sure that everyone connects to that particular server when setting thing up.
+Make sure that everyone connects to that particular server when setting things up.
 
 
 The starting point for the project is Go:[https://github.com/praqma-training/gowebserver](https://github.com/praqma-training/gowebserver).
@@ -54,7 +54,7 @@ The starting point for the project is Go:[https://github.com/praqma-training/gow
    2. Enable github issues
    3. Create board at waffle.io
 
-This will serve as the basis for your work, and should be up to date at all times. When you have created the waffle board send a link to #aarhus on slack.
+This will serve as the basis for your work, and should be up to date at all times. When you have created the waffle board, send a link to #aarhus on slack.
 
 ## Step I
 In order to build our pipeline, we need to have our CI infrastructure up and running.
