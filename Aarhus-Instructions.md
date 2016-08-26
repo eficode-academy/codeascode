@@ -85,13 +85,13 @@ http://YOUR-AWS-INSTANCE:8081/jenkins
 
 ### Configure a simple build job
 
-Hint: We obviously want to use our good friend Docker to build the go app, so that we avoid installing go-lang and other dependencies on our build server (or locally on the developers machine).
+Hint: We obviously want to use our good friend Docker to build the go app, to avoid installing go-lang and other dependencies on our build server (or locally on the developers machine).
 
 Luck is with you, as the gowebserver repo has a Dockerfile that will actualy build the webserver. 
 
 Try something like: `docker build .` as a starter. Consider tagging the image with a name so you can run it later.
 
-You might also want to look at the --no-cache option ...
+You might also want to look at the `--no-cache` option ...
 
 If you really get curious about how the Dockerfile works, ask google or your instructor.
 
@@ -101,8 +101,7 @@ If you really get curious about how the Dockerfile works, ask google or your ins
 Make your job run the "unit tests" as well. (yes, we know that the included tests are functional tests. Feel free to write some true unit tests as well).
 
 Hint: The docker image you built has go installed, and go allows you to use the command `go test` to 
-automatically run any tests that follow the `func TestXxx(*testing.T)` signature. Again no need to install any dependencies,
-just use the image you just built.
+automatically run any tests that follow the `func TestXxx(*testing.T)` signature. Again, no need to install any dependencies, just use the image you just built.
 
 When you get this far, you are ready to start TDD'ing your web app.
 
@@ -111,11 +110,11 @@ Implement a Pretested Integration workflow
 
 Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin) for your build.
 
-Hint: Since Jenkins might have to do commits on merges, you will have to set up a user.name and user.email setting in Jenkins global configuration. ("jenkins" and "jenkins@localhost" should do fine for now).
+Hint: Since Jenkins might have to do commits on merges, you will have to set up a `user.name` and `user.email` setting in Jenkins global configuration. ("jenkins" and "jenkins@localhost" should do fine for now).
 
 ## Step IV - start implementing Roman Numerals
 
-We need a `go` web service that when we hit the `/roman/<number>` url it will return the roman numeral representation of it.
+We need a `go` web service that, when we hit the `/roman/<number>` url, returns the roman numeral representation of it.
 
 ````
 Given a positive integer number (eg 42) determine
@@ -174,7 +173,7 @@ Continue work on the roman numerals converter. If you have already completed the
 
 Ideas could be:
 
- * Can you write plain true unit tests instead of functional http tests?
+ * Can you write true unit tests instead of functional http tests?
  * Can you find a way of splitting up your tests, so that you can control when to run unit tests and when to run http tests?
 
 
@@ -183,7 +182,7 @@ Ideas could be:
  * Try to re-create one or more of your build jobs using JobDSL. 
  * Try to use jobDSL to set up a Jenkins "Pipeline View" to show your pipeline status.
 
-## Using the provided JobDSL and analysing the created pipeline.
- * The gowebserver actually has a JobDSL script that sets up a pipeline for the project. Try to get it running in a seed job that polls for changes.
+## Using the provided JobDSL and analyzing the created pipeline.
+ * The go webserver actually has a JobDSL script that sets up a pipeline for the project. Try to get it running in a seed job that polls for changes.
  * Experiment with making simple iterative changes to the pipeline and see the seed job recreate the generated jobs.
- * Try to understand all the weird things that the pipeline steps do to pass parameters on to the downstream jobs.
+ * Try to understand all the things that the pipeline steps do to pass parameters on to the downstream jobs.
