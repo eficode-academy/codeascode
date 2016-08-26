@@ -96,6 +96,8 @@ You might also want to look at the `--no-cache` option ...
 
 If you really get curious about how the Dockerfile works, ask google or your instructor.
 
+Did we forget to mention that you might need `sudo` to run docker commands inside Jenkins? Can you figure out why?
+
 ### Setup your build job to poll Github for changes.
 
 ### Set up simple testing
