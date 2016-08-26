@@ -78,8 +78,9 @@ We need to build the docker image inside the jenkins folder, and then run it.
 	docker run -d -p 8081:8080 -p 50000:50000 -v /opt/containers/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/lib/x86_64-linux-gnu/libapparmor.so.1 myjenkins
 ```
 
-Check that the jenkins server is up and running on:
-http://YOUR-AWS-INSTANCE:8081/jenkins
+Check that the jenkins server is up and running on: `http://YOUR-AWS-INSTANCE:8081/jenkins` 
+
+(Note: It wont respond without the `/jenkins`context path)
 
 ## Step II - Set up initial build and test jobs for the application
 
