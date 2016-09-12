@@ -1,2 +1,2 @@
 # codeascode
-Continuous Delivery as Code Workshop
+Continuous Delivery as Code Workshops
