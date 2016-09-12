@@ -11,17 +11,13 @@ A pipeline for this small project could contain steps like the following:
  * Release
  * Deploy to production
 
-When the day is over you should be able to make changes to your Roman numeral implementation and follow the build steps all the way to a new release.
-
-We want to use all the tools and techniques we learned this week.  
+When the day is over you should be able to make changes to your Roman numeral implementation and automatically run the build steps all the way to a new release.  This workshop will cover the basics of our CoDe Journey.
 
  * Test driven development
- * Agile task management with github issues
  * Version control with git
  * Build, test and ship with docker containers
  * Continuous Delivery with Jenkins
- * Extra credit:
-   * Implement the praqmatic git flow branching strategy
+ * Implement the praqmatic git flow branching strategy
 
 ## Outline of the day
 
@@ -53,9 +49,9 @@ Every iteration is divided into the following sections:
   * [Exercise 6 - Extra credit!](journey-exercises/Exercise6.md)
 
 
-## Step IV - start implementing Roman Numerals
+## go-roman - A roman number conversion web service written in go
 
-We need a `go` web service that, when we hit the `/roman/<number>` url, returns the roman numeral representation of it.
+We need a `go` web service that, when we hit the `/roman/?number=<number>` url, returns the roman numeral representation of it.
 
 ````
 Given a positive integer number (eg 42) determine
