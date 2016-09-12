@@ -1,5 +1,7 @@
 ## Exercise 1 - Infrastructure as code
 
+Follow these steps on your AWS instance to create a complete continuous delivery infrastructure.
+
 ### Install docker compose
 
 Follow these steps to install docker-compose:
