@@ -1,7 +1,6 @@
 ## Create your own fork for the gowebserver
 
-Each team needs _one_ repo to be their central origin.
-Make sure that everyone in the team is added as a collaborator connects to that particular server when setting things up.
+Each of you needs _one_ repo to be their central origin that you can edit.
 
 Follow the instructions here [../CreateFork.md](../CreateFork.md)
 
