@@ -25,7 +25,7 @@ We want to use all the tools and techniques we learned this week.
 
 ## Outline of the day
 
-The project will be undertaken in iterations, with each session containing some backround teaching, a quick demo, then individual exercise.
+The project will be undertaken in iterations, with each session containing some background teaching, a quick demo, then individual exercise.
 
 The end goal for our development process:
 
@@ -39,79 +39,19 @@ Every iteration is divided into the following sections:
    * **Demo**: a quick tour of how to implement
    * **Exercise**: your turn to implement
 
-## Exercise 1 - source forks and infrastructure
+## Slides
 
-### Install docker compose
+ * [CoDe with Containers Slides](http://code.praqma.com/reveals/code-journey/)
 
-Follow these steps to install docker-compose:
+## Exercises
 
-    ubuntu@docker:~$ sudo -i
-    root@docker:~$ curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-    root@docker:~$ chmod +x /usr/local/bin/docker-compose
-    root@docker:~$ exit
-    ubuntu@docker:~$
+  * [Exercise 1 - Your very own fork](journey-exercises/Exercise1.md)
+  * [Exercise 2 - Infrastructure as code](journey-exercises/Exercise2.md)
+  * [Exercise 3 - First build and test](journey-exercises/Exercise3.md)
+  * [Exercise 4 - Jenkins jobs as code](journey-exercises/Exercise4.md)
+  * [Exercise 5 - Pre-tested Integration](journey-exercises/Exercise5.md)
+  * [Exercise 6 - Extra credit!](journey-exercises/Exercise6.md)
 
-Verify `compose` is installed:
-
-    ubuntu@docker:~/code-infra/containers$ docker-compose --version
-    docker-compose version 1.8.0, build f3628c7
-    ubuntu@docker:~/code-infra/containers$
-
-### Set up a jenkins, docker registry and artifactory server for the team
-````
-ubuntu@docker:~$ git clone https://github.com/praqma-training/code-infra
-````
-### Follow the setup instructions
-Go here and follow the instructions to make the data directories: https://github.com/praqma-training/code-infra
-
-Verify that you can reach the apache server in your web browser and that jenkins is up and running.
-
-
-### Source fork
-Each team needs _one_ repo to be their central origin.
-Make sure that everyone in the team is added as a collaborator connects to that particular server when setting things up.
-
-Follow the instructions here [CreateFork.md](CreateFork.md)
-
-When you have created the fork, send a link to our slack channel.
-
-
-Check that the jenkins server is up and running on: `http://YOUR-AWS-INSTANCE/jenkins`
-
-(Note: It wont respond without the `/jenkins`context path)
-
-## Step II - Set up initial build and test jobs for the application
-
-### Configure a simple build job
-
-Hint: We obviously want to use our good friend Docker to build the go app, to avoid installing go-lang and other dependencies on our build server (or locally on the developers machine).
-
-Luck is with you, as the gowebserver repo has a Dockerfile that will actualy build the webserver.
-
-Try something like: `docker build .` as a starter. Consider tagging the image with a name so you can run it later.
-
-You might also want to look at the `--no-cache` option ...
-
-If you really get curious about how the Dockerfile works, ask google or your instructor.
-
-Did we forget to mention that you might need `sudo` to run docker commands inside Jenkins? Can you figure out why?
-
-### Setup your build job to poll Github for changes.
-
-### Set up simple testing
-Make your job run the "unit tests" as well. (yes, we know that the included tests are functional tests. Feel free to write some true unit tests as well).
-
-Hint: The docker image you built has go installed, and go allows you to use the command `go test` to
-automatically run any tests that follow the `func TestXxx(*testing.T)` signature. Again, no need to install any dependencies, just use the image you just built.
-
-When you get this far, you are ready to start TDD'ing your web app.
-
-## Step III - pretested
-Implement a Pretested Integration workflow
-
-Add [pre-tested integration](https://wiki.jenkins-ci.org/display/JENKINS/Pretested+Integration+Plugin) for your build.
-
-Hint: Since Jenkins might have to do commits on merges, you will have to set up a `user.name` and `user.email` setting in Jenkins global configuration. ("jenkins" and "jenkins@localhost" should do fine for now).
 
 ## Step IV - start implementing Roman Numerals
 
@@ -147,43 +87,3 @@ Examples:
 Do some work on implementing the Roman Numerals converter, to see the build pipeline in action. Help for the Go-lang syntax can be found here: [Effective GO](https://golang.org/doc/effective_go.html)
 
 Don't focus on using fancy language constructs or using a fancy algorithm. The actual coding exercise is not important - instead focus on the process of making small incremental changes, commiting and pushing them, and see how the Continuous Delivery Pipeline works.
-
-
-
-
-## Step V
-Setup performance test
-
-## Step VI - Extend your pipeline
-Now that we have a basic pretested integration setup that only allows "good" commits on master, it is time to continue the CD storyline and add other verification steps "post-integration".
-
-Suggestions might include:
-
-  * Run functional tests
-  * Deploy your webapp "to a test environment", e.g. on port 8081.
-  * Use the included Dockerized siege-engine tool to load test your application.
-  * Can you find a simple code coverage tool for go or other static analysis?
-  * Release notes?
-  * Versioning?
-
-If a commit passes through your pipeline and has "sufficient" quality, it is time to deploy it to production. E.g. port 80
-
-## Step VII
-
-Continue work on the roman numerals converter. If you have already completed the full converter, try to see if you can improve the way you test it.
-
-Ideas could be:
-
- * Can you write true unit tests instead of functional http tests?
- * Can you find a way of splitting up your tests, so that you can control when to run unit tests and when to run http tests?
-
-
-## Optional tasks to keep you going
-### Writing jobDSL
- * Try to re-create one or more of your build jobs using JobDSL.
- * Try to use jobDSL to set up a Jenkins "Pipeline View" to show your pipeline status.
-
-## Using the provided JobDSL and analyzing the created pipeline.
- * The go webserver actually has a JobDSL script that sets up a pipeline for the project. Try to get it running in a seed job that polls for changes.
- * Experiment with making simple iterative changes to the pipeline and see the seed job recreate the generated jobs.
- * Try to understand all the things that the pipeline steps do to pass parameters on to the downstream jobs.
