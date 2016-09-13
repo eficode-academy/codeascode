@@ -27,9 +27,18 @@ Go here and follow the instructions to make the data directories: https://github
 
 Verify that you can reach the apache server in your web browser and that jenkins is up and running.
 
-
-
+### Initial configuration of jenkins
 
 Check that the jenkins server is up and running on: `http://YOUR-AWS-INSTANCE/jenkins`
 
 (Note: It wont respond without the `/jenkins`context path)
+
+#### Initial admin password
+
+You need to access jenkins the first time by getting the initial admin password from the jenkins container.  Use this command on the aws node to retrieve it and set up a new user.
+
+````
+docker exec -it containers_jenkins_1 cat /var/jenkins_home/secrets/initialAdminPassword
+````
+
+Copy the output string and paste it in the "admin" user password field in the Jenkins console
