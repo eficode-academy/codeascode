@@ -14,6 +14,8 @@ If you really get curious about how the Dockerfile works, ask google or your ins
 
 Did we forget to mention that you might need `sudo` to run docker commands inside Jenkins? Can you figure out why?
 
+If you need a shortcut, try running the `./build.sh` script for your build step...
+
 ### 3.2 Set up a test job
 
 Now we want to add a second job to our pipeline.  Trigger the test job from the build job, and pass through the parameters in `props.env` together with `GITHUB_USERNAME` and `DOCKER_USERNAME`.
